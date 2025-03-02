@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      AUTH_ISSUER: "http://localhost"
 
     steps:
       - name: Checkout Code
@@ -28,9 +30,9 @@ jobs:
 
       # If the doctors micro service is inside a "doctors" folder, set working-directory accordingly.
       - name: Build Doctors Microservice
-        working-directory: ./doctors
+        working-directory: ./server
         run: go build ./...
 
       - name: Run Tests for Doctors Microservice
-        working-directory: ./doctors
+        working-directory: ./server
         run: go test -v ./...
