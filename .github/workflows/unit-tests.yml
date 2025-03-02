@@ -1,0 +1,36 @@
+name: Doctors Microservice Build and Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      # If the doctors micro service is inside a "doctors" folder, set working-directory accordingly.
+      - name: Build Doctors Microservice
+        working-directory: ./doctors
+        run: go build ./...
+
+      - name: Run Tests for Doctors Microservice
+        working-directory: ./doctors
+        run: go test -v ./...

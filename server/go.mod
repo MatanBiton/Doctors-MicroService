@@ -5,7 +5,6 @@ go 1.22.0
 require (
 	github.com/TekClinic/Doctors-MicroService/doctors_protobuf v0.100.0-integrated
 	github.com/TekClinic/MicroService-Lib v0.1.3
-	github.com/deckarep/golang-set/v2 v2.7.0
 	github.com/go-playground/validator/v10 v10.22.0
 	github.com/mattn/go-sqlite3 v1.14.24
 	github.com/stretchr/testify v1.10.0
@@ -15,6 +14,7 @@ require (
 	github.com/uptrace/bun/driver/pgdriver v1.2.1
 	go.uber.org/zap v1.27.0
 	google.golang.org/grpc v1.65.0
+	k8s.io/apimachinery v0.31.0
 )
 
 require (
@@ -43,7 +43,6 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240812133136-8ffd90a71988 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/apimachinery v0.31.0 // indirect
 	mellium.im/sasl v0.3.1 // indirect
 )
 
